@@ -87,11 +87,11 @@ class HexData:
             elif rec_type == 4:
                 base_addr, = struct.unpack('!H', rec_data)
                 base_addr <<= 16
-                print 'New Base Addr: 0x%x' % base_addr
+                #print 'New Base Addr: 0x%x' % base_addr
         #regions aren't nessicarily in order in file
         self.regions.sort(key=lambda x: x.start_address)
-        for region in self.regions:
-            print region
+        #for region in self.regions:
+        #    print region
     def __contains__(self, addr):
         for region in self.regions:
             if addr in region:
@@ -142,7 +142,7 @@ class HEXView(BinaryView):
 
     @classmethod
     def is_valid_for_data(cls, data):
-        print 'Trying Intel-Hex'
+        #print 'Trying Intel-Hex'
         try:
             HexData(view2str(data))
             return True
